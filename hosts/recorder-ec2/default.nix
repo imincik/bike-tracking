@@ -2,7 +2,7 @@
   imports = [
     ./../../modules/nixos/common.nix
     ./../../modules/nixos/imincik-user.nix
-    ./../../modules/nixos/recorder.nix
+    ./../../modules/nixos/tracker.nix
     ./../../modules/nixos/ec2.nix
   ];
 
