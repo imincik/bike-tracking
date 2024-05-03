@@ -26,10 +26,27 @@
       # enableACME = true;
       # forceSSL = true;
 
-      # use to serve owntracks basic ui (not owntracks/frontend)
+      # owntracks frontend
       locations."/".extraConfig = ''
         # auth_basic "OwnTracks pub";
-        # auth_basic_user_file  /etc/nginx/htpasswd; # sudo htpasswd /etc/nginx/htpasswd owntracks
+        # auth_basic_user_file  /etc/nginx/htpasswd;
+        root ${pkgs.owntracks-frontend}/share;
+      '';
+
+      # # use to serve owntracks basic ui (not owntracks/frontend)
+      # locations."/rec".extraConfig = ''
+      #   # auth_basic "OwnTracks pub";
+      #   # auth_basic_user_file  /etc/nginx/htpasswd; # sudo htpasswd /etc/nginx/htpasswd owntracks
+      #   proxy_pass http://localhost:8083;
+      #   proxy_http_version 1.1;
+      #   proxy_set_header Host $host;
+      #   proxy_set_header X-Real-IP $remote_addr;
+      #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      # '';
+
+      locations."/pub".extraConfig = ''
+        # auth_basic "OwnTracks pub";
+        # auth_basic_user_file  /etc/nginx/htpasswd;
         proxy_pass http://localhost:8083;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
@@ -37,7 +54,7 @@
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       '';
 
-      locations."/pub".extraConfig = ''
+      locations."/api".extraConfig = ''
         # auth_basic "OwnTracks pub";
         # auth_basic_user_file  /etc/nginx/htpasswd;
         proxy_pass http://localhost:8083;
