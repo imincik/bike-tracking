@@ -73,8 +73,8 @@ in
 
       # owntracks frontend
       locations."/".extraConfig = ''
-        auth_basic "Bike tracker";
-        auth_basic_user_file  ${trackerPasswordFile};
+        # auth_basic "Bike tracker";
+        # auth_basic_user_file  ${trackerPasswordFile};
         root ${pkgs.owntracks-frontend}/share;
       '';
 
