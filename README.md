@@ -7,7 +7,7 @@ Location tracking for my MTB adventures using [Owntracks](https://owntracks.org/
 
 * Launch test VM
 ```bash
-
+nix run .#vm
 ```
 
 ## AWS EC2 deployment
