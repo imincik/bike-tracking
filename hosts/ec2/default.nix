@@ -3,7 +3,7 @@
     ./../../modules/nixos/common.nix
     ./../../modules/nixos/imincik-user.nix
     ./../../modules/nixos/tracker.nix
-    ./../../modules/nixos/vm.nix
+    ./../../modules/nixos/ec2.nix
   ];
 
   nixpkgs = {
@@ -30,28 +30,7 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-  networking.hostName = "recorder";
-
-  # VM port forwarding
-  virtualisation.forwardPorts = [
-    {
-      from = "host";
-      host.port = 8080;
-      guest.port = 80;
-    }
-
-    {
-      from = "host";
-      host.port = 8443;
-      guest.port = 443;
-    }
-
-    {
-      from = "host";
-      host.port = 8083;
-      guest.port = 8083;
-    }
-  ];
+  networking.hostName = "tracker";
 
   system.stateVersion = "23.11";
   nixpkgs.hostPlatform = "x86_64-linux";

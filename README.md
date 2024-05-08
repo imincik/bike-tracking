@@ -3,6 +3,13 @@
 Location tracking for my MTB adventures using [Owntracks](https://owntracks.org/).
 
 
+## Test VM
+
+* Launch test VM
+```bash
+
+```
+
 ## AWS EC2 deployment
 
 * Launch NixOS [AMI](https://nixos.github.io/amis/)
@@ -15,7 +22,7 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
 * Deploy
 ```bash
-nixos-rebuild switch --flake github:imincik/bike-tracking#recorder-ec2
+nixos-rebuild switch --flake github:imincik/bike-tracking#ec2
 ```
 
 * Allow following SG inbound rules

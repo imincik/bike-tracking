@@ -36,27 +36,27 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      recorder-vm = nixpkgs.lib.nixosSystem {
+      vm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./hosts/recorder-vm
+          ./hosts/vm
         ];
       };
-      recorder-ec2 = nixpkgs.lib.nixosSystem {
+      ec2 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./hosts/recorder-ec2
+          ./hosts/ec2
         ];
       };
     };
 
-    # Launch VM by running `nix run .#recorder`
+    # Launch VM by running `nix run .#vm`
     apps = forAllSystems (system: {
-      recorder = {
+      vm = {
         type = "app";
-        program = "${self.nixosConfigurations.recorder-vm.config.system.build.vm}/bin/run-recorder-vm";
+        program = "${self.nixosConfigurations.vm.config.system.build.vm}/bin/run-tracker-vm";
       };
     });
   };
