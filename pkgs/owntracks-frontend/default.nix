@@ -27,6 +27,7 @@ buildNpmPackage rec {
 
     mkdir -p $out/share
     cp -r dist/* $out/share
+    cp ${./config.js} $out/share/config/config.js
 
     runHook postInstall
   '';
