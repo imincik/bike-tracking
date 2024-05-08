@@ -13,6 +13,8 @@
     password = "root";
   };
 
+  services.getty.autologinUser = "root";
+
   virtualisation = {
     memorySize = 4096;
     cores = 4;
