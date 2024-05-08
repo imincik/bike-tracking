@@ -21,7 +21,7 @@ let
       ip_address=$(curl --silent -H "X-aws-ec2-metadata-token: $token" http://169.254.169.254/latest/meta-data/public-ipv4)
     else
       # is VM
-      ip_address="unknown"
+      ip_address="localhost:8080"
     fi
 
     echo -e "\nPhone configuration file (save in phone-config.otrc):"
@@ -33,10 +33,9 @@ let
       "username": "tracker",
       "password": "$password",
       "mode": 3,
-      "host": "http://$ip_address/pub",
-      "port": 80,
+      "url": "http://$ip_address/pub",
       "monitoring": 2,
-      "locatorInterval": 300,
+      "moveModeLocatorInterval": 300,
       "autostartOnBoot": true,
       "extendedData": true
     }
